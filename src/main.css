@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+  --ion-font-family: 'Fira Sans', sans-serif;
+}
+
+#tab-bar {
+    > :first-child {
+        color: currentColor;
+    }
+}
+
+@media (min-width: 600px) {
+    ion-tabs {
+        flex-direction: row-reverse;
+    }
+
+    #tab-bar {
+        min-width: 57px;
+        height: auto;
+        flex-direction: column;
+        border-top: none;
+        border-right: var(--border);
+        padding-inline: 0.5em;
+        padding-block: 1em;
+        gap: 2em;
+
+        ion-tab-button {
+            flex-grow: 0;
+            min-height: 57px;
+            aspect-ratio: 1;
+        }
+        #tab-button-spacer {
+            flex-grow: 1;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #tab-bar {
+        > :first-child, #tab-button-spacer {
+            display: none;
+        }
+    }
+}

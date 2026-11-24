@@ -1,0 +1,9 @@
+ion-datetime {
+    max-width: unset;
+}
+
+@media (min-width: 800px) {
+    #content.calendar {
+        grid-template-columns: 3fr 4fr;
+    }
+}

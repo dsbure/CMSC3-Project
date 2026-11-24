@@ -1,0 +1,1 @@
+export const UNI_NAME = "MSU - General Santos ily";
