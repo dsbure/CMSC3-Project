@@ -3,8 +3,8 @@ import { IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent }
 import './PlaceholderCard.css';
 
 interface CardProps {
-    name: string;
-    showDeets: boolean;
+    name?: string;
+    showDeets?: boolean;
 }
 
 const PlaceholderCard: React.FC<CardProps> = ({ name = "yea", showDeets = true }) => {
