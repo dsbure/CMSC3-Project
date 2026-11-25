@@ -12,8 +12,6 @@ import { IonReactRouter } from '@ionic/react-router';
 import { calendar, chatbubbles, briefcase, home, person, school } from 'ionicons/icons';
 import { Navigate, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -44,9 +42,11 @@ import '@ionic/react/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 import './main.css';
-import Resources from './pages/Resources';
-import Chats from './pages/Chats';
+
 import Calendar from './pages/Calendar';
+import Chats from './pages/Chats';
+import Home from './pages/Home';
+import Resources from './pages/Resources';
 
 setupIonicReact({
   mode: 'md',
