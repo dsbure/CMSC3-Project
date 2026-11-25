@@ -16,6 +16,10 @@
   padding-bottom: 0em;
   background: linear-gradient(0deg, transparent, var(--ion-background-color) 50%);
   text-shadow: 0 0 10px var(--ion-background-color);
+  #chat-search {
+    padding-inline: 0;
+    --background: var(--ion-card-background);
+  }
 }
 
 @media (max-width: 1000px) {

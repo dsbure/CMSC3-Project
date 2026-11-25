@@ -19,7 +19,7 @@ const ChatUserCard: React.FC<ChatUserCardProps>
     <IonCard className={"chat-card ion-activatable" + (isActive ? " active" : "")} onClick={() => onClick(chatName)}>
       <IonRippleEffect></IonRippleEffect>
       <IonAvatar>
-        <img src="./favicon.png" />
+        <img src={"https://api.dicebear.com/10.x/pixelbot/svg?tags=animation&rotate=-15&scale=0.7&seed=" + encodeURIComponent(chatName)} />
       </IonAvatar>
       <IonCardHeader>
         <IonCardTitle>{chatName}</IonCardTitle>

@@ -1,6 +1,6 @@
 import type { IChatData } from './interfaces/IChat';
 
-export const UNI_NAME = 'MSU - General Santos ily';
+export const UNI_NAME = 'MSU - Generally Selos';
 export const CHATS: IChatData = {
   'Zedrich Paraluman': [
     {
@@ -112,7 +112,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '1': [
+  'Edgar Jay M. Navales': [
     {
       chatText: ':)',
       isSender: true,
@@ -124,7 +124,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '2': [
+  'Samm Briones': [
     {
       chatText: ':)',
       isSender: true,
@@ -136,7 +136,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '3': [
+  'Eric Malaya': [
     {
       chatText: ':)',
       isSender: true,
@@ -148,7 +148,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '4': [
+  'Nix': [
     {
       chatText: ':)',
       isSender: true,
@@ -160,7 +160,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '5': [
+  'Omori': [
     {
       chatText: ':)',
       isSender: true,
@@ -172,7 +172,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '6': [
+  'something': [
     {
       chatText: ':)',
       isSender: true,
@@ -184,7 +184,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '7': [
+  'something similar': [
     {
       chatText: ':)',
       isSender: true,
@@ -196,7 +196,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '8': [
+  'maayong bonethug': [
     {
       chatText: ':)',
       isSender: true,
@@ -208,7 +208,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '9': [
+  'Sunny': [
     {
       chatText: ':)',
       isSender: true,
@@ -220,7 +220,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '10': [
+  'Amiel Sol': [
     {
       chatText: ':)',
       isSender: true,
@@ -232,7 +232,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '11': [
+  'Cup of Joe': [
     {
       chatText: ':)',
       isSender: true,
@@ -244,7 +244,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '12': [
+  'May joke ako': [
     {
       chatText: ':)',
       isSender: true,
@@ -256,7 +256,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '13': [
+  'Cup of Joke': [
     {
       chatText: ':)',
       isSender: true,
@@ -268,7 +268,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '14': [
+  'juan karlos': [
     {
       chatText: ':)',
       isSender: true,
@@ -280,7 +280,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '15': [
+  'TONEEJAY': [
     {
       chatText: ':)',
       isSender: true,
@@ -292,7 +292,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '16': [
+  'syd hartha': [
     {
       chatText: ':)',
       isSender: true,
@@ -304,7 +304,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '17': [
+  'Munimuni': [
     {
       chatText: ':)',
       isSender: true,
@@ -316,7 +316,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '18': [
+  'Chrstn': [
     {
       chatText: ':)',
       isSender: true,
@@ -328,7 +328,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '19': [
+  'fitterkarma': [
     {
       chatText: ':)',
       isSender: true,
@@ -340,7 +340,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  '20': [
+  'AAAAAA': [
     {
       chatText: ':)',
       isSender: true,
@@ -367,8 +367,14 @@ export function _addChat(chatText: string, chatName: string): void {
     isSender: true,
     sent: new Date(),
   });
-  cSubscribers.forEach((e) => e());
+  cSubscribers.forEach((e) => {
+    e();
+  });
 }
-export function _onAddChat(callback: () => void): void {
+export function _onAddChat(callback: () => void): () => void {
+  if (cSubscribers.includes(callback)) return () => {};
   cSubscribers.push(callback);
+  return () => {
+    cSubscribers.filter(e => e !== callback);
+  }
 }

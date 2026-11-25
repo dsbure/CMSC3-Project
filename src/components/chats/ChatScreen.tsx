@@ -5,15 +5,14 @@ import {
   IonCardTitle,
   IonIcon,
   IonInput,
-  useIonViewWillEnter,
 } from '@ionic/react';
 import './ChatScreen.css';
 import { arrowBack, send } from 'ionicons/icons';
+import { useEffect, useRef, useState } from 'react';
 
+import { _addChat } from '../../constants';
 import type { IChat } from '../../interfaces/IChat';
 import { toShortTimeString } from '../../util';
-import { useEffect, useRef, useState } from 'react';
-import { _addChat } from '../../constants';
 
 type ChatScreenProps = {
   chatName: string;
@@ -69,7 +68,7 @@ const ChatScreen: React.FC<ChatScreenProps> = ({ chatName, chats, back }: ChatSc
         })}
         <div ref={botRef}></div>
         {sortedChats == null ? (
-          <strong>Click on a chat to continue.</strong>
+          <h1>Click on a chat to continue.</h1>
         ) : (
           <div className="chat-input">
               <IonInput onKeyUp={(e) => {

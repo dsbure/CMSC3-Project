@@ -1,0 +1,38 @@
+#latest-announcements, #post-feed, #chat-summ-content {
+  display: flex;
+  flex-direction: column;
+}
+#post-feed, #chat-summ-content, #cal-summ-content {
+  gap: 1em;
+}
+.postcard {
+  background: var(--ion-background-color);
+  padding: 1em;
+  border-radius: 4px;
+}
+.post-content {
+  color: var(--ion-text-color-step-150);
+  padding-bottom: 1em;
+}
+#chat-summ .chat-card {
+  margin: 0;
+  box-shadow: none;
+  background: var(--ion-background-color);
+}
+.post-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .post-info {
+    p {
+      font-style: italic;
+      line-height: 1.25em;
+    }
+  }
+  .post-actions {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+  }
+}

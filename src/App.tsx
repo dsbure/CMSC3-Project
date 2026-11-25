@@ -9,7 +9,7 @@ import {
   setupIonicReact,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { calendar, chatbubbles, briefcase, home, person, school } from 'ionicons/icons';
+import { calendar, chatbubbles, briefcase, home, school } from 'ionicons/icons';
 import { Navigate, Route } from 'react-router-dom';
 
 /* Core CSS required for Ionic components to work properly */
@@ -80,8 +80,10 @@ const App: React.FC = () => (
           </IonTabButton>
           <IonTabButton tab="spacer" disabled={true} href="/">
           </IonTabButton>
-          <IonTabButton tab="account" href="/home">
-            <IonIcon aria-hidden="true" icon={person} />
+          <IonTabButton tab="account" href="" onClick={() => alert("na para bang wa ko gikapoy </3")}>
+            <IonIcon id="account-icon">
+              <img src="https://api.dicebear.com/10.x/pixelbot/svg?tags=animation&rotate=-15&scale=0.7&seed=Edgar Jay M. Navales" />
+            </IonIcon>
             <IonLabel>Account</IonLabel>
           </IonTabButton>
         </IonTabBar>

@@ -4,6 +4,10 @@ html {
   --ion-font-family: 'Fira Sans', sans-serif;
 }
 
+#account-icon {
+  border-radius: 999px;
+}
+
 #tab-bar {
     > :first-child {
         color: currentColor;
