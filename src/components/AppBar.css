@@ -4,7 +4,7 @@ ion-header.md {
 ion-toolbar {
   --background: linear-gradient(0deg, transparent, var(--ion-background-color) 50%);
   text-shadow: 0 0 10px var(--ion-background-color);
-  padding: 2em 1em !important;
+  padding: 2em 1em 0.5em 1em !important;
 }
 #title-bar {
   display: flex;
@@ -19,7 +19,7 @@ ion-toolbar {
 }
 @media (min-width: 600px) {
   ion-toolbar {
-    padding: 2em 2.5em !important;
+    padding: 2em 2.5em 0.5em 2.5em !important;
   }
   #name {
     display: block;

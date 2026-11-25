@@ -36,6 +36,81 @@ export const CHATS: IChatData = {
       isSender: false,
       sent: _generateRandomDate(),
     },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: true,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
+    {
+      chatText: ':(',
+      isSender: false,
+      sent: _generateRandomDate(),
+    },
   ],
   '1': [
     {
@@ -284,4 +359,16 @@ function _generateRandomDate(): Date {
   const from = new Date(2007, 7, 7);
   const to = new Date();
   return new Date(from.getTime() + Math.random() * (to.getTime() - from.getTime()));
+}
+const cSubscribers: (() => void)[] = [];
+export function _addChat(chatText: string, chatName: string): void {
+  CHATS[chatName].push({
+    chatText: chatText,
+    isSender: true,
+    sent: new Date(),
+  });
+  cSubscribers.forEach((e) => e());
+}
+export function _onAddChat(callback: () => void): void {
+  cSubscribers.push(callback);
 }

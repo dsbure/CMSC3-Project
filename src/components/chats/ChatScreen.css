@@ -1,0 +1,10 @@
+.chat-screen ion-card-header {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+  ion-card-title {
+    height: fit-content;
+    margin: 0;
+  }
+}

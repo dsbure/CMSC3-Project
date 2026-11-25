@@ -1,0 +1,87 @@
+.chat-card {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: 0.25s;
+  ion-avatar {
+    padding: 0.75em;
+  }
+  ion-card-header {
+    padding-left: 0;
+  }
+  ion-card-title {
+    font-size: 1em;
+  }
+  ion-card-subtitle {
+    font-weight: 400;
+    margin-top: 4px;
+  }
+}
+.active ~ .chat-card, .chat-card:has(~ .active) {
+  opacity: 0.6;
+  filter: saturate(0.5);
+}
+.chat-screen {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+.chat-scroll {
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+  justify-content: end;
+  padding-bottom: 0;
+}
+#chat-area {
+  overflow: scroll;
+  ion-card-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-bottom: 0em;
+    background: linear-gradient(0deg, transparent, var(--ion-background-color) 50%);
+    text-shadow: 0 0 10px var(--ion-background-color);
+  }
+}
+.chat-input {
+  position: sticky;
+  display: flex;
+  bottom: 0;
+  z-index: 1;
+  gap: 4px;
+  padding-bottom: 1em;
+  background: linear-gradient(180deg, transparent, var(--ion-background-color) 50%);
+  text-shadow: 0 0 10px var(--ion-background-color);
+  ion-button {
+    min-width: 36px;
+    color: white;
+  }
+  ion-input {
+    backdrop-filter: blur(32px);
+    background-color: color-mix(in srgb, transparent, var(--ion-background-color) 50%);
+    border-radius: 4px;
+    --padding-start: 1em;
+    --padding-end: 1em;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+}
+.chat-bubble {
+  background-color: var(--ion-card-background);
+  padding: 0.75em;
+  color: var(--ion-text-color-step-150);
+  border-radius: 4px;
+  width: fit-content;
+  max-width: 67%;
+  &.sender {
+    background-color: var(--ion-color-primary-shade);
+    color: white;
+    align-self: end;
+  }
+  .chat-sent {
+    font-size: smaller;
+    opacity: 0.5;
+  }
+}
