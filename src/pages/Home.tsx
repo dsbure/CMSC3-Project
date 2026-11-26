@@ -1,4 +1,6 @@
+import type { IonModalCustomEvent, OverlayEventDetail } from '@ionic/core';
 import {
+  IonAvatar,
   IonButton,
   IonCard,
   IonCardContent,
@@ -8,35 +10,63 @@ import {
   IonContent,
   IonIcon,
   IonPage,
+  useIonRouter,
 } from '@ionic/react';
 import './Home.css';
 import '../theme/page.css';
 import { add, arrowForward, chatboxEllipsesOutline, heartOutline, shareSocial } from 'ionicons/icons';
+import { useEffect, useRef, useState } from 'react';
 
 import AppBar from '../components/AppBar';
 import PlaceholderCard from '../components/PlaceholderCard';
 import ChatUserCard from '../components/chats/ChatUserCard';
-import { CHATS, UNI_NAME } from '../constants';
+import CreatePostModal from '../components/home/CreatePostModal';
+import { MediaItem } from '../components/home/MediaItem';
+import { _onAddPost, CHATS, POSTS, UNI_NAME, USER } from '../constants';
+import type { IPost } from '../interfaces/IPost';
 import { getLastChat, toShortTimeString } from '../util';
+
 
 type PostCardProps = {
   sender: string;
-  // TODO: add mediaaaaaargh
   postContent: string;
+  postMedia?: string[];
   created: Date;
 
   likes: number;
   comments: number; // arraych
 };
 
-const PostCard: React.FC<PostCardProps> = ({ sender, postContent, created, likes, comments }: PostCardProps) => {
+const PostCard: React.FC<PostCardProps> = ({ sender, postContent, postMedia, created, likes, comments }: PostCardProps) => {
   return (
     <div className="postcard">
-      <div className="post-content">{postContent}</div>
+      <div className="post-content">{postContent.split("\n").map((q, i) => {
+        return <p key={i}>{q}</p>
+      })}</div>
+      {
+       postMedia ?
+          <div className="media-preview">
+            {
+              postMedia.map((q, i) => {
+                return <MediaItem
+                  key={i}
+                  media={q}
+                  isRemovable={false}
+                />
+              })
+            }
+            </div>
+          : null
+      }
       <div className="post-footer">
-        <div className="post-info">
-          <p>{'from ' + sender}</p>
-          <p>{toShortTimeString(created)}</p>
+        <div className="post-info-container">
+          <IonAvatar className="account-icon">
+            <img src={"https://api.dicebear.com/10.x/pixelbot/svg?tags=animation&rotate=-15&scale=0.7&seed=" + encodeURIComponent(sender)} />
+          </IonAvatar>
+          <div className="post-info">
+            <p>{'from ' + sender}</p>
+            <p>{toShortTimeString(created)}</p>
+          </div>
         </div>
         <div className="post-actions">
           <IonButton size="small" fill="outline" className="post-likes">
@@ -49,7 +79,7 @@ const PostCard: React.FC<PostCardProps> = ({ sender, postContent, created, likes
           </IonButton>
           <IonButton size="small" fill="outline" className="post-share">
             <IonIcon icon={shareSocial} slot="start" />
-            SHare
+            Share
           </IonButton>
         </div>
       </div>
@@ -58,6 +88,23 @@ const PostCard: React.FC<PostCardProps> = ({ sender, postContent, created, likes
 };
 
 const Home: React.FC = () => {
+  const router = useIonRouter();
+  const [posts, setPosts] = useState<IPost[]>(POSTS);
+  const [_force, setForce] = useState(0);
+  const modal = useRef<HTMLIonModalElement>(null);
+  const input = useRef<HTMLIonTextareaElement>(null);
+  const media = useRef<HTMLInputElement>(null);
+
+  const _forceRender = () => setForce((_forceRender) => _forceRender + 1);
+
+  useEffect(() => {
+    const unsub = _onAddPost(() => {
+      setPosts(POSTS);
+      _forceRender();
+    });
+    return () => unsub();
+  }, []);
+
   return (
     <IonPage>
       <AppBar uniName={UNI_NAME} tab="Home" />
@@ -94,34 +141,21 @@ const Home: React.FC = () => {
                   <IonIcon slot="end" icon={add} />
                   Create Post
                 </IonButton>
-                <PostCard
-                  sender="Dee Makausad"
-                  postContent="This is a post. Hello World. Lorem Ipsum. Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah"
-                  created={new Date(2008, 7, 7, 7, 7)}
-                  likes={8}
-                  comments={7}
-                />
-                <PostCard
-                  sender="Dee Makausad"
-                  postContent="This is a post. Hello World. Lorem Ipsum. Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah"
-                  created={new Date(2008, 7, 7, 7, 7)}
-                  likes={8}
-                  comments={7}
-                />
-                <PostCard
-                  sender="Dee Makausad"
-                  postContent="This is a post. Hello World. Lorem Ipsum. Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah"
-                  created={new Date(2008, 7, 7, 7, 7)}
-                  likes={8}
-                  comments={7}
-                />
-                <PostCard
-                  sender="Dee Makausad"
-                  postContent="This is a post. Hello World. Lorem Ipsum. Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah"
-                  created={new Date(2008, 7, 7, 7, 7)}
-                  likes={8}
-                  comments={7}
-                />
+                {posts
+                  .sort((a, b) => b.created.getTime() - a.created.getTime())
+                  .map((q, i) => {
+                    return (
+                      <PostCard
+                        key={i}
+                        sender={q.sender}
+                        postContent={q.postContent}
+                        created={q.created}
+                        postMedia={q.postMedia ?? undefined}
+                        likes={q.likes}
+                        comments={q.comments}
+                      />
+                    );
+                  })}
               </IonCardContent>
             </IonCard>
           </IonCard>
@@ -131,23 +165,26 @@ const Home: React.FC = () => {
                 <IonCardTitle>Chats</IonCardTitle>
               </IonCardHeader>
               <IonCardContent id="chat-summ-content">
-                {
-                  Object.entries(CHATS).sort((a, b) => {
+                {Object.entries(CHATS)
+                  .sort((a, b) => {
                     return getLastChat(b[1]).sent.getTime() - getLastChat(a[1]).sent.getTime();
-                  }).map((q, i) => {
+                  })
+                  .map((q, i) => {
                     if (i !== 0) return;
                     return (
                       <ChatUserCard
+                        key={i}
                         chatName={q[0]}
                         lastChat={getLastChat(q[1]).chatText}
                         sent={getLastChat(q[1]).sent}
-                        onClick={() => { }}
+                        onClick={() => {
+                          router.push('/chats?chat=' + encodeURIComponent(q[0]), 'forward');
+                        }}
                         isActive={true}
                       />
                     );
-                  })
-                }
-                <IonButton id="view-chats">
+                  })}
+                <IonButton id="view-chats" routerLink="/chats" routerDirection="forward">
                   <IonIcon slot="end" icon={arrowForward} />
                   View Chats
                 </IonButton>
@@ -156,6 +193,15 @@ const Home: React.FC = () => {
             <PlaceholderCard name="calendar here pero gasakit na akong likod unya nani" showDeets={false} />
           </IonCard>
         </div>
+        <CreatePostModal
+          ref={modal}
+          trigger={'create-post'}
+          input={input}
+          media={media}
+          onDismiss={(_e: IonModalCustomEvent<OverlayEventDetail>): void => {
+
+          }}
+        />
       </IonContent>
     </IonPage>
   );

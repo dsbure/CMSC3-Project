@@ -43,6 +43,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 import './theme/variables.css';
 import './main.css';
 
+import { USER } from './constants';
 import Calendar from './pages/Calendar';
 import Chats from './pages/Chats';
 import Home from './pages/Home';
@@ -82,7 +83,7 @@ const App: React.FC = () => (
           </IonTabButton>
           <IonTabButton tab="account" href="" onClick={() => alert("na para bang wa ko gikapoy </3")}>
             <IonIcon id="account-icon">
-              <img src="https://api.dicebear.com/10.x/pixelbot/svg?tags=animation&rotate=-15&scale=0.7&seed=Edgar Jay M. Navales" />
+              <img src={USER.pfpURL} />
             </IonIcon>
             <IonLabel>Account</IonLabel>
           </IonTabButton>

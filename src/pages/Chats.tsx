@@ -3,6 +3,7 @@ import './Chats.css';
 import '../theme/page.css';
 import Fuse from 'fuse.js';
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import AppBar from '../components/AppBar';
 import ChatScreen from '../components/chats/ChatScreen';
@@ -16,6 +17,12 @@ const Chats: React.FC = () => {
   const [currentName, setCurrentName] = useState<string>('');
   const [currentSearch, setCurrentSearch] = useState<string>('');
   const [visChats, setVisChats] = useState<IChatData>(CHATS);
+
+  const [params, setParams] = useSearchParams();
+  const setCurrentChatParams = (chatName?: string): void => {
+    setParams(chatName ? { chat: chatName } : undefined);
+  };
+
   useEffect(() => {
     const unsub = _onAddChat(() => {
       setCurrentChat((currentChat) => currentChat + 1);
@@ -58,6 +65,14 @@ const Chats: React.FC = () => {
       );
     });
   }, [currentSearch]);
+  if (params.get("chat") && currentName !== params.get("chat")) {
+    if (Object.keys(CHATS).includes(params.get("chat") ?? '')) {
+      setCurrentName(params.get("chat")!);
+    }
+  } else if (!params.get("chat") && currentName !== "") {
+    setCurrentName("");
+  }
+
   return (
     <IonPage>
       <AppBar uniName={UNI_NAME} tab="Chats" />
@@ -87,14 +102,14 @@ const Chats: React.FC = () => {
                     chatName={q[0]}
                     lastChat={getLastChat(q[1]).chatText}
                     sent={getLastChat(q[1]).sent}
-                    onClick={setCurrentName}
+                    onClick={setCurrentChatParams}
                     isActive={currentName == q[0]}
                   />
                 );
               })}
           </IonCard>
           <IonCard id="chat-area" className={currentName ? 'active' : ''}>
-            <ChatScreen chatName={currentName} chats={CHATS[currentName]} back={() => setCurrentName('')} />
+            <ChatScreen chatName={currentName} chats={CHATS[currentName]} back={() => setCurrentChatParams()} />
           </IonCard>
         </div>
       </IonContent>

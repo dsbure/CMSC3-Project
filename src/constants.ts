@@ -1,6 +1,12 @@
 import type { IChatData } from './interfaces/IChat';
+import type { IPost } from './interfaces/IPost';
 
-export const UNI_NAME = 'MSU - Generally Selos';
+export const USER = {
+  name: 'Edgar Jay M. Navales',
+  pfpURL: 'https://api.dicebear.com/10.x/pixelbot/svg?tags=animation&rotate=-15&scale=0.7&seed=Edgar Jay M. Navales',
+};
+
+export const UNI_NAME = 'NPU - Southern Mindanao';
 export const CHATS: IChatData = {
   'Zedrich Paraluman': [
     {
@@ -123,6 +129,11 @@ export const CHATS: IChatData = {
       isSender: false,
       sent: _generateRandomDate(),
     },
+    {
+      chatText: 'WOW',
+      isSender: false,
+      sent: new Date(2087, 0, 0),
+    },
   ],
   'Samm Briones': [
     {
@@ -148,7 +159,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  'Nix': [
+  Nix: [
     {
       chatText: ':)',
       isSender: true,
@@ -160,7 +171,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  'Omori': [
+  Omori: [
     {
       chatText: ':)',
       isSender: true,
@@ -172,7 +183,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  'something': [
+  something: [
     {
       chatText: ':)',
       isSender: true,
@@ -208,7 +219,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  'Sunny': [
+  Sunny: [
     {
       chatText: ':)',
       isSender: true,
@@ -280,7 +291,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  'TONEEJAY': [
+  TONEEJAY: [
     {
       chatText: ':)',
       isSender: true,
@@ -304,7 +315,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  'Munimuni': [
+  Munimuni: [
     {
       chatText: ':)',
       isSender: true,
@@ -316,7 +327,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  'Chrstn': [
+  Chrstn: [
     {
       chatText: ':)',
       isSender: true,
@@ -328,7 +339,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  'fitterkarma': [
+  fitterkarma: [
     {
       chatText: ':)',
       isSender: true,
@@ -340,7 +351,7 @@ export const CHATS: IChatData = {
       sent: _generateRandomDate(),
     },
   ],
-  'AAAAAA': [
+  AAAAAA: [
     {
       chatText: ':)',
       isSender: true,
@@ -354,13 +365,103 @@ export const CHATS: IChatData = {
   ],
 };
 
+export const POSTS: IPost[] = [
+  {
+    sender: 'The Microscope - NPU-SM',
+    postContent:
+      "SPORTS NEWS | 𝘾𝙉𝙎 𝙅𝘼𝘾𝙆 𝙊'𝙇𝘼𝙉𝙏𝙀𝙍𝙉𝙎 𝘽𝘼𝙂 𝙏𝙃𝙀 𝙒𝙄𝙉 𝙁𝙍𝙊𝙈 𝘾𝙀𝘼 𝙍𝙀𝘼𝙋𝙀𝙍𝙎 𝙄𝙉 𝙎𝙋𝙊𝙍𝙏𝙎𝘽𝘼𝙇𝙇 𝙃𝘼𝙏𝙎 𝙈𝙀𝙉 \n \
+      \n \
+      Earlier this evening, the CNS...\n \
+      \n \
+      okay pretend may complete caption dito sorry lang haha\n \
+      \n \
+      #notasportswriter\n \
+      #intramurals\n \
+      #zimd",
+    created: new Date(),
+    postMedia: ["https://i.ibb.co/SDK5Lspt/Frame-223.png"],
+    likes: 592,
+    comments: 87,
+  },
+  {
+    sender: 'Dee Makausad',
+    postContent:
+      "I wish I never met you \n \
+    You are the worst thing that I'm still \n \
+    Keeping tabs on for some stupid reason \n \
+    You were just being nice \n \
+    Now, I fully believe you're out there somewhere also \n \
+    Keepin' tabs on how I might be feeling \n \
+    For some stupid reason \n \
+    I keep on believing \n \
+    You care and you're reeling too \n \
+    I don't even know you",
+    created: new Date(2026, 7, 15, 12, 2),
+    likes: _randRange(0, 99),
+    comments: _randRange(0, 99),
+  },
+  {
+    sender: 'Kenji Delos Reyes',
+    postContent: '🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮',
+    created: _generateRandomDate(),
+    likes: _randRange(0, 99),
+    comments: _randRange(0, 99),
+  },
+  {
+    sender: 'Carson',
+    postContent: 'Hi po! Is Zedrich Paraluman from 1-BSSecret single?????',
+    created: _generateRandomDate(),
+    likes: _randRange(0, 99),
+    comments: _randRange(0, 99),
+  },
+  {
+    sender: 'Edgar Jay M. Navales',
+    postContent: 'KALIBANGON KOOOOOOO TABANG',
+    created: _generateRandomDate(),
+    likes: _randRange(0, 99),
+    comments: _randRange(0, 99),
+  },
+  {
+    sender: 'Edgar Jay M. Navales',
+    postContent: 'aynag enroll msu guys',
+    created: _generateRandomDate(),
+    likes: _randRange(0, 99),
+    comments: _randRange(0, 99),
+  },
+  {
+    sender: 'Coolij of Enginiring',
+    postContent: 'hi guys',
+    created: _generateRandomDate(),
+    likes: _randRange(0, 99),
+    comments: _randRange(0, 99),
+  },
+];
+
 // placeholder funcsz
+function _randRange(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min) + min);
+}
 function _generateRandomDate(): Date {
   const from = new Date(2007, 7, 7);
   const to = new Date();
   return new Date(from.getTime() + Math.random() * (to.getTime() - from.getTime()));
 }
+const pSubscribers: (() => void)[] = [];
 const cSubscribers: (() => void)[] = [];
+export function _addPost(postText: string, sender: string, postMedia?: string[]): void {
+  POSTS.push({
+    sender: sender,
+    postContent: postText,
+    postMedia: [...(postMedia ?? [])],
+    likes: 0,
+    comments: 0,
+    created: new Date(),
+  });
+  console.log(POSTS);
+  pSubscribers.forEach((e) => {
+    e();
+  });
+}
 export function _addChat(chatText: string, chatName: string): void {
   CHATS[chatName].push({
     chatText: chatText,
@@ -371,10 +472,17 @@ export function _addChat(chatText: string, chatName: string): void {
     e();
   });
 }
+export function _onAddPost(callback: () => void): () => void {
+  if (pSubscribers.includes(callback)) return () => {};
+  pSubscribers.push(callback);
+  return () => {
+    pSubscribers.filter((e) => e !== callback);
+  };
+}
 export function _onAddChat(callback: () => void): () => void {
   if (cSubscribers.includes(callback)) return () => {};
   cSubscribers.push(callback);
   return () => {
-    cSubscribers.filter(e => e !== callback);
-  }
+    cSubscribers.filter((e) => e !== callback);
+  };
 }

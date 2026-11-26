@@ -1,0 +1,89 @@
+#create-post-modal {
+  --height: fit-content;
+  ion-content {
+    --padding-bottom: 1.5em;
+    &::part(scroll) {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      padding-inline: 1.5em;
+    }
+  }
+  ion-toolbar {
+    padding: 1em !important;
+  }
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .footer-buttons {
+    display: flex;
+  }
+  .post-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+      margin: 0;
+      font-size: smaller;
+      color: var(--ion-text-color-step-450);
+      font-style: italic;
+    }
+  }
+  #media {
+    visibility: collapse;
+  }
+}
+.postcard .media-preview {
+  margin-bottom: 0.5em;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  justify-self: center;
+  border-radius: 4px;
+  overflow: scroll;
+  max-height: 500px;
+  gap: 0;
+  .media-container {
+    height: fit-content;
+    max-height: 500px;
+    display: flex;
+    aspect-ratio: unset;
+    img {
+      aspect-ratio: unset;
+    }
+  }
+}
+.media-preview {
+  display: flex;
+  gap: 0.5em;
+}
+.media-container {
+  border: 1px solid var(--ion-background-color-step-150);
+  aspect-ratio: 1;
+  height: 8em;
+  border-radius: 4px;
+  overflow: hidden;
+  img {
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+  .remove-media {
+    position: absolute;
+    background: #000a;
+    border-radius: 999px;
+    margin: 8px;
+    height: 32px;
+    width: 32px;
+    padding: 8px;
+    transition: 0.2s;
+    &:hover {
+      background-color: #000;
+    }
+    ion-icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
