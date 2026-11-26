@@ -3,19 +3,31 @@ ion-header.md {
 }
 ion-toolbar {
   --background: linear-gradient(0deg, transparent, var(--ion-background-color) 50%);
-  text-shadow: 0 0 10px var(--ion-background-color);
+  filter: drop-shadow(0 2px 4px var(--ion-background-color));
   padding: 2em 1em 0.5em 1em !important;
+  &::part(content) {
+    display: flex;
+    gap: 0.5em;
+    flex-direction: row;
+  }
+  .uni-logo {
+    padding-inline-start: 20px;
+  }
 }
 #title-bar {
   display: flex;
-  flex-direction: row;
-  flex-grow: 1;
+  flex-direction: column;
+  ion-title {
+    overflow: visible;
+    padding-inline: 0;
+  }
 }
 #name {
   display: none;
   text-align: right;
   font-weight: 400;
   color: var(--ion-background-color-step-650);
+  width: fit-content;
 }
 @media (min-width: 600px) {
   ion-toolbar {

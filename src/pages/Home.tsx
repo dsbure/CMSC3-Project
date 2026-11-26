@@ -18,14 +18,13 @@ import { add, arrowForward, chatboxEllipsesOutline, heartOutline, shareSocial } 
 import { useEffect, useRef, useState } from 'react';
 
 import AppBar from '../components/AppBar';
-import PlaceholderCard from '../components/PlaceholderCard';
+import CalItemCard from '../components/calendar/CalItemCard';
 import ChatUserCard from '../components/chats/ChatUserCard';
 import CreatePostModal from '../components/home/CreatePostModal';
 import { MediaItem } from '../components/home/MediaItem';
-import { _onAddPost, CHATS, POSTS, UNI_NAME, USER } from '../constants';
+import { _onAddPost, CHATS, POSTS, UNI_NAME } from '../constants';
 import type { IPost } from '../interfaces/IPost';
 import { getLastChat, toShortTimeString } from '../util';
-
 
 type PostCardProps = {
   sender: string;
@@ -37,31 +36,37 @@ type PostCardProps = {
   comments: number; // arraych
 };
 
-const PostCard: React.FC<PostCardProps> = ({ sender, postContent, postMedia, created, likes, comments }: PostCardProps) => {
+const PostCard: React.FC<PostCardProps> = ({
+  sender,
+  postContent,
+  postMedia,
+  created,
+  likes,
+  comments,
+}: PostCardProps) => {
   return (
     <div className="postcard">
-      <div className="post-content">{postContent.split("\n").map((q, i) => {
-        return <p key={i}>{q}</p>
-      })}</div>
-      {
-       postMedia ?
-          <div className="media-preview">
-            {
-              postMedia.map((q, i) => {
-                return <MediaItem
-                  key={i}
-                  media={q}
-                  isRemovable={false}
-                />
-              })
-            }
-            </div>
-          : null
-      }
+      <div className="post-content">
+        {postContent.split('\n').map((q, i) => {
+          return <p key={i}>{q}</p>;
+        })}
+      </div>
+      {postMedia ? (
+        <div className="media-preview">
+          {postMedia.map((q, i) => {
+            return <MediaItem key={i} media={q} isRemovable={false} />;
+          })}
+        </div>
+      ) : null}
       <div className="post-footer">
         <div className="post-info-container">
           <IonAvatar className="account-icon">
-            <img src={"https://api.dicebear.com/10.x/pixelbot/svg?tags=animation&rotate=-15&scale=0.7&seed=" + encodeURIComponent(sender)} />
+            <img
+              src={
+                'https://api.dicebear.com/10.x/pixelbot/svg?tags=animation&rotate=-15&scale=0.7&seed=' +
+                encodeURIComponent(sender)
+              }
+            />
           </IonAvatar>
           <div className="post-info">
             <p>{'from ' + sender}</p>
@@ -190,7 +195,23 @@ const Home: React.FC = () => {
                 </IonButton>
               </IonCardContent>
             </IonCard>
-            <PlaceholderCard name="calendar here pero gasakit na akong likod unya nani" showDeets={false} />
+            <IonCard id="cal-summ">
+              <IonCardHeader>
+                <IonCardTitle>Upcoming Events</IonCardTitle>
+              </IonCardHeader>
+              <IonCardContent id="cal-summ-content">
+                <CalItemCard
+                  itemName={'End of Beginning'}
+                  sent={new Date(2026, 11, 26, 9, 30)}
+                  onClick={(_itemName: string): void => {
+                  }}
+                />
+                <IonButton id="view-calendar" routerLink="/calendar" routerDirection="forward">
+                  <IonIcon slot="end" icon={arrowForward} />
+                  View Calendar
+                </IonButton>
+              </IonCardContent>
+            </IonCard>
           </IonCard>
         </div>
         <CreatePostModal
@@ -198,9 +219,7 @@ const Home: React.FC = () => {
           trigger={'create-post'}
           input={input}
           media={media}
-          onDismiss={(_e: IonModalCustomEvent<OverlayEventDetail>): void => {
-
-          }}
+          onDismiss={(_e: IonModalCustomEvent<OverlayEventDetail>): void => {}}
         />
       </IonContent>
     </IonPage>

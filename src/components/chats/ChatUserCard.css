@@ -61,7 +61,7 @@
   }
   ion-input {
     backdrop-filter: blur(32px);
-    background-color: color-mix(in srgb, transparent, var(--ion-background-color) 50%);
+    background-color: color-mix(in srgb, transparent, var(--ion-card-background) 50%);
     border-radius: 4px;
     --padding-start: 1em;
     --padding-end: 1em;

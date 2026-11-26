@@ -6,6 +6,7 @@ export const USER = {
   pfpURL: 'https://api.dicebear.com/10.x/pixelbot/svg?tags=animation&rotate=-15&scale=0.7&seed=Edgar Jay M. Navales',
 };
 
+export const UNI_LOGO = '/npusm.svg';
 export const UNI_NAME = 'NPU - Southern Mindanao';
 export const CHATS: IChatData = {
   'Zedrich Paraluman': [
