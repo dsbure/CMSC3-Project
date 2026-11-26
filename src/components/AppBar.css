@@ -4,7 +4,7 @@ ion-header.md {
 ion-toolbar {
   --background: linear-gradient(0deg, transparent, var(--ion-background-color) 50%);
   filter: drop-shadow(0 2px 4px var(--ion-background-color));
-  padding: 2em 1em 0.5em 1em !important;
+  padding: 1em 1em 0.5em 1em !important;
   &::part(content) {
     display: flex;
     gap: 0.5em;

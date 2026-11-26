@@ -17,6 +17,15 @@ ion-content::part(scroll) {
     }
 }
 
+@media (max-width: 600px) {
+    ion-content::part(scroll) {
+        padding-inline: 0;
+    }
+    #content > ion-card {
+      margin: 0;
+      border-radius: 0;
+    }
+}
 @media (min-width: 600px) {
     ion-content::part(scroll) {
         padding-inline: 2.5em;
