@@ -1,4 +1,4 @@
-import { IonCard, IonContent, IonDatetime, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonCard, IonContent, IonDatetime, IonPage } from '@ionic/react';
 
 import './Calendar.css';
 import '../theme/page.css';
