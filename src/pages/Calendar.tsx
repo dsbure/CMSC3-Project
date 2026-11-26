@@ -1,45 +1,66 @@
 import { IonCard, IonContent, IonDatetime, IonPage } from '@ionic/react';
-
 import './Calendar.css';
 import '../theme/page.css';
+import randomMC from 'random-material-color';
+import { useRef } from 'react';
+
 import AppBar from '../components/AppBar';
 import CalItemCard from '../components/calendar/CalItemCard';
-import { UNI_NAME } from '../constants';
+import { CALITEMS, UNI_NAME } from '../constants';
+
 
 const Calendar: React.FC = () => {
+  const calRef = useRef<HTMLIonDatetimeElement>(null);
   return (
     <IonPage>
       <AppBar uniName={UNI_NAME} tab="Calendar" />
       <IonContent fullscreen>
         <div id="content" className="calendar">
           <IonCard id="side-card">
-            <CalItemCard
-              itemName={'End of Beginning'}
-              sent={new Date(2026, 11, 26, 9, 30)}
-              onClick={(_itemName: string): void => {
-              }}
-            />
-            <CalItemCard
-              itemName={'Graduate ka na kol'}
-              sent={new Date()}
-              onClick={(_itemName: string): void => {
-              }}
-            />
-            <CalItemCard
-              itemName={'End of the World (DOST Stipend)'}
-              sent={new Date(2026, 10, 13, 18, 30)}
-              onClick={(_itemName: string): void => {
-              }}
-            />
-            <CalItemCard
-              itemName={'Beginning of End'}
-              sent={new Date(2020, 3, 2, 8, 30)}
-              onClick={(_itemName: string): void => {
-              }}
-            />
+            {CALITEMS.sort((a, b) => b.date.getTime() - a.date.getTime()).map((q, i) => {
+              return (
+                <CalItemCard
+                  key={i}
+                  itemName={q.name}
+                  sent={q.date}
+                  onClick={(_itemName: string): void => {
+                    calRef.current!.value = q.date.toISOString().split("T")[0];
+                  }}
+                  details={q.details}
+                  tags={q.tags}
+                  from={q.from ?? ''}
+                  className={new Date().getTime() > q.date.getTime() ? "done" : ""}
+                />
+              );
+            })}
           </IonCard>
           <IonCard id="calendar-container">
-            <IonDatetime></IonDatetime>
+            <IonDatetime
+              ref={calRef}
+              presentation="date"
+              showAdjacentDays={true}
+              showDefaultTitle={true}
+              highlightedDates={(isoDate) => {
+                let highlightObj = undefined;
+                CALITEMS.forEach((q) => {
+                  if (q.date.toISOString().split('T')[0] === isoDate) {
+                    highlightObj = {
+                      backgroundColor:
+                        'color-mix(in srgb, transparent 50%, ' +
+                        randomMC.getColor({ text: !q.from ? q.name : q.from }) +
+                        ')',
+                      textColor:
+                        'color-mix(in srgb, var(--ion-text-color) 80%, ' +
+                        randomMC.getColor({ text: !q.from ? q.name : q.from }) +
+                        ')',
+                    };
+                  }
+                });
+                return highlightObj;
+              }}
+            >
+              <span slot="title">{new Date().toLocaleDateString()}</span>
+            </IonDatetime>
           </IonCard>
         </div>
       </IonContent>

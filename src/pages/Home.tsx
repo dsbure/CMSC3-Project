@@ -22,7 +22,7 @@ import CalItemCard from '../components/calendar/CalItemCard';
 import ChatUserCard from '../components/chats/ChatUserCard';
 import CreatePostModal from '../components/home/CreatePostModal';
 import { MediaItem } from '../components/home/MediaItem';
-import { _onAddPost, CHATS, POSTS, UNI_NAME } from '../constants';
+import { _onAddPost, CALITEMS, CHATS, POSTS, UNI_NAME } from '../constants';
 import type { IPost } from '../interfaces/IPost';
 import { getLastChat, toShortTimeString } from '../util';
 
@@ -200,12 +200,21 @@ const Home: React.FC = () => {
                 <IonCardTitle>Upcoming Events</IonCardTitle>
               </IonCardHeader>
               <IonCardContent id="cal-summ-content">
-                <CalItemCard
-                  itemName={'End of Beginning'}
-                  sent={new Date(2026, 11, 26, 9, 30)}
-                  onClick={(_itemName: string): void => {
-                  }}
-                />
+                {CALITEMS.sort((a, b) => b.date.getTime() - a.date.getTime()).map((q, i) => {
+                  if (i >= 2) return;
+                  return (
+                    <CalItemCard
+                      key={i}
+                      itemName={q.name}
+                      sent={q.date}
+                      onClick={(_itemName: string): void => {
+                        router.push('/calendar?item=' + encodeURIComponent(q.name), 'forward');
+                      } }
+                      details={q.details}
+                      tags={q.tags}
+                      from={q.from ?? ''} className={''}                    />
+                  );
+                })}
                 <IonButton id="view-calendar" routerLink="/calendar" routerDirection="forward">
                   <IonIcon slot="end" icon={arrowForward} />
                   View Calendar

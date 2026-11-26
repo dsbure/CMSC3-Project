@@ -1,3 +1,4 @@
+import type { ICalItem } from './interfaces/ICalItem';
 import type { IChatData } from './interfaces/IChat';
 import type { IPost } from './interfaces/IPost';
 
@@ -380,7 +381,7 @@ export const POSTS: IPost[] = [
       #intramurals\n \
       #zimd",
     created: new Date(),
-    postMedia: ["https://i.ibb.co/SDK5Lspt/Frame-223.png"],
+    postMedia: ['https://i.ibb.co/SDK5Lspt/Frame-223.png'],
     likes: 592,
     comments: 87,
   },
@@ -435,6 +436,54 @@ export const POSTS: IPost[] = [
     created: _generateRandomDate(),
     likes: _randRange(0, 99),
     comments: _randRange(0, 99),
+  },
+];
+
+export const CALITEMS: ICalItem[] = [
+  {
+    date: _generateRandomDate(),
+    name: 'Yeah 2',
+    details:
+      "Something something something",
+    tags: [],
+  },
+  {
+    date: new Date(2026, 10, 13, 18, 30),
+    name: 'End of the World',
+    details:
+      "pero atlis naay dost",
+    tags: ['No way'],
+  },
+  {
+    date: _generateRandomDate(),
+    name: 'Yeah 1',
+    details:
+      "Something something something",
+    tags: ['No way', 'Yehey'],
+  },
+  {
+    date: new Date(2026, 10, 30, 9, 30),
+    name: '😭',
+    details:
+      "Something something something",
+    tags: ['NPU-SM', 'Yehey'],
+    from: "PHYS 20",
+  },
+  {
+    date: new Date(2020, 11, 26, 9, 30),
+    name: 'Beginning of End',
+    details:
+      "Something something something",
+    tags: ['NPU-SM', 'Yehey'],
+    from: "PHYS 20",
+  },
+  {
+    date: new Date(2026, 11, 26, 9, 30),
+    name: 'End of Beginning',
+    details:
+      "Don't you notice how - I get quiet when there's no one else~ around. Me and You and Awkward Silence -- don't you dare look at me that way... I don't need reminders of how you don't feel the same...",
+    tags: ['NPU-SM'],
+    from: "PHYS 20",
   },
 ];
 

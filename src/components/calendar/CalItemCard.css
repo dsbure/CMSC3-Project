@@ -1,15 +1,16 @@
 .cal-card {
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   transition: 0.25s;
+  height: 100%;
   ion-icon {
     padding: 0.75em;
     width: 3em;
     height: 3em;
   }
   ion-card-header {
-    padding-left: 0;
+    padding-bottom: 0.5em;
   }
   ion-card-title {
     font-size: 1em;
@@ -17,6 +18,34 @@
   ion-card-subtitle {
     font-weight: 400;
     margin-top: 4px;
+  }
+  .cal-content {
+    width: 100%;
+  }
+  .cal-color {
+    min-width: 4px;
+    border-radius: 2px;
+    margin: 0.5em;
+    margin-right: 0;
+  }
+  .cal-content > ion-chip {
+    margin-inline: 1px;
+  }
+  .tag-container ion-chip {
+    margin: 1px;
+    &:first-child {
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+    }
+    &:last-child {
+      border-top-right-radius: 16px;
+      border-bottom-right-radius: 16px;
+    }
+    border-radius: 4px;
+  }
+  transition: 0.2s;
+  &.done {
+    opacity: 0.5;
   }
 }
 #cal-summ .cal-card {

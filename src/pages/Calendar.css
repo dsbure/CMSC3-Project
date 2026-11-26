@@ -1,9 +1,42 @@
 ion-datetime {
-    max-width: unset;
+  max-width: unset;
+  &::part(datetime-selected-date) {
+    margin-top: 0;
+  }
 }
 
-@media (min-width: 800px) {
-    #content.calendar {
-        grid-template-columns: 3fr 4fr;
+#content.calendar {
+  height: 100%;
+  padding-bottom: 2.5em;
+  overflow: hidden;
+  #side-card {
+    max-height: 100%;
+    overflow: scroll;
+  }
+}
+
+@media (max-width: 600px) {
+  #content.calendar {
+    gap: 1em;
+  }
+  #calendar-container {
+    order: -1;
+    max-height: 100%;
+    overflow: scroll;
+    height: unset;
+    ion-datetime {
+      max-height: 100%;
+      &::part(datetime-header) {
+        display: none;
+      }
     }
+  }
+  #side-card {
+    order: 1;
+  }
+}
+@media (min-width: 800px) {
+  #content.calendar {
+    grid-template-columns: 3fr 4fr;
+  }
 }

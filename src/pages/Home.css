@@ -12,7 +12,7 @@
 }
 @media (min-width: 800px) {
   #content.home {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 4fr 3fr;
   }
 }
 .post-content {
@@ -33,7 +33,7 @@
   align-items: center;
   gap: 0.5em;
 }
-[data-rmiz-modal-overlay="visible"] {
+div[data-rmiz-modal-overlay="visible"] {
   background-color: #000a !important;
 }
 .img-zoom-close {
