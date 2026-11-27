@@ -18,11 +18,6 @@ const Chats: React.FC = () => {
   const [currentSearch, setCurrentSearch] = useState<string>('');
   const [visChats, setVisChats] = useState<IChatData>(CHATS);
 
-  const [params, setParams] = useSearchParams();
-  const setCurrentChatParams = (chatName?: string): void => {
-    setParams(chatName ? { chat: chatName } : undefined);
-  };
-
   useEffect(() => {
     const unsub = _onAddChat(() => {
       setCurrentChat((currentChat) => currentChat + 1);
@@ -65,6 +60,11 @@ const Chats: React.FC = () => {
       );
     });
   }, [currentSearch]);
+
+  const [params, setParams] = useSearchParams();
+  const setCurrentChatParams = (chatName?: string): void => {
+    setParams(chatName ? { chat: chatName } : undefined);
+  };
   if (params.get("chat") && currentName !== params.get("chat")) {
     if (Object.keys(CHATS).includes(params.get("chat") ?? '')) {
       setCurrentName(params.get("chat")!);

@@ -2,7 +2,8 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  transition: 0.25s;
+  transition: 0.15s;
+  outline: 0px var(--ion-text-color-step-850) solid;
   ion-avatar {
     padding: 0.75em;
   }
@@ -20,6 +21,9 @@
 .active ~ .chat-card, .chat-card:has(~ .active) {
   opacity: 0.6;
   filter: saturate(0.5);
+}
+.chat-card.active {
+  outline: 4px var(--ion-text-color-step-850) solid;
 }
 .chat-screen {
   display: flex;

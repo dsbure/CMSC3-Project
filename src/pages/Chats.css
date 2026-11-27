@@ -25,10 +25,10 @@
 @media (max-width: 1000px) {
   #content.chats {
     grid-template-columns: 1fr;
+    padding-bottom: 0;
   }
   #chat-area {
     display: none;
-    margin-inline: 0;
     &.active {
       display: block;
     }

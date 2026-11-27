@@ -1,0 +1,80 @@
+#content.resources {
+  height: 100%;
+  padding-bottom: 2.5em;
+  grid-template-columns: 1fr 2fr;
+  > ion-card {
+    height: 100%;
+    overflow: scroll;
+    ion-card {
+      height: fit-content;
+    }
+  }
+  #course-screen {
+    ion-card-header {
+      flex-direction: row;
+      gap: 0.5em;
+    }
+    h1, ion-card-title {
+      align-content: center;
+      margin-block: 0;
+      font-size: 1.75em;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: 1.25em;
+    }
+    > ion-card > ion-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+  }
+  .prof-card, .material-card {
+    box-shadow: none;
+    margin: 0;
+    background-color: var(--ion-background-color);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    ion-card-header {
+      padding-bottom: 0;
+    }
+    ion-button {
+      width: 100%;
+    }
+    .pc-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      ion-chip {
+        margin: 1px;
+        &:first-child {
+          border-top-left-radius: 16px;
+          border-bottom-left-radius: 16px;
+        }
+        &:last-child {
+          border-top-right-radius: 16px;
+          border-bottom-right-radius: 16px;
+        }
+        border-radius: 4px;
+      }
+    }
+  }
+}
+.active ~ .course-card, .course-card:has(~ .active) {
+  opacity: 0.6;
+  filter: saturate(0.5);
+}
+@media (max-width: 1000px) {
+  #course-screen {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+  #content.resources {
+    grid-template-columns: auto;
+    padding-bottom: 0;
+  }
+}

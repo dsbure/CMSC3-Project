@@ -8,7 +8,7 @@ ion-datetime {
 #content.calendar {
   height: 100%;
   padding-bottom: 2.5em;
-  overflow: hidden;
+  /*overflow: hidden;*/
   #side-card {
     max-height: 100%;
     overflow: scroll;
@@ -16,19 +16,27 @@ ion-datetime {
 }
 
 @media (max-width: 800px) {
+  ion-header:has(+ ion-content > .calendar) {
+    background-color: var(--ion-background-color);
+  }
   #content.calendar {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0;
     padding-bottom: 0;
+    height: unset;
     > ion-card {
       margin-block: 0;
+      background-color: var(--ion-background-color);
     }
   }
   #calendar-container {
+    position: sticky;
+    top: 0;
     overflow: scroll;
     height: unset;
+    z-index: 1;
     ion-datetime {
       max-height: 100%;
       &::part(datetime-header) {

@@ -185,7 +185,7 @@ const Home: React.FC = () => {
                         onClick={() => {
                           router.push('/chats?chat=' + encodeURIComponent(q[0]), 'forward');
                         }}
-                        isActive={true}
+                        isActive={false}
                       />
                     );
                   })}
@@ -209,7 +209,7 @@ const Home: React.FC = () => {
                       sent={q.date}
                       onClick={(_itemName: string): void => {
                         router.push('/calendar?item=' + encodeURIComponent(q.name), 'forward');
-                      } }
+                      }}
                       details={q.details}
                       tags={q.tags}
                       from={q.from ?? ''} className={''}                    />

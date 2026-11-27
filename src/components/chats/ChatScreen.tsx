@@ -1,11 +1,4 @@
-import {
-  IonButton,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
-  IonIcon,
-  IonInput,
-} from '@ionic/react';
+import { IonButton, IonCardContent, IonCardHeader, IonCardTitle, IonIcon, IonInput } from '@ionic/react';
 import './ChatScreen.css';
 import { arrowBack, send } from 'ionicons/icons';
 import { useEffect, useRef, useState } from 'react';
@@ -42,7 +35,7 @@ const ChatScreen: React.FC<ChatScreenProps> = ({ chatName, chats, back }: ChatSc
   const inputRef = useRef<HTMLIonInputElement | null>(null);
   const botRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    botRef.current?.scrollIntoView();
+    botRef.current?.scrollIntoView({ block: "start" });
   }, [chats, currentChat]);
   const submitChat = (): void => {
     inputRef.current?.getInputElement().then((e) => {
@@ -71,9 +64,13 @@ const ChatScreen: React.FC<ChatScreenProps> = ({ chatName, chats, back }: ChatSc
           <h1>Click on a chat to continue.</h1>
         ) : (
           <div className="chat-input">
-              <IonInput onKeyUp={(e) => {
-                if (e.key === "Enter") submitChat();
-              }} placeholder="Aa" ref={inputRef} />
+            <IonInput
+              onKeyUp={(e) => {
+                if (e.key === 'Enter') submitChat();
+              }}
+              placeholder="Aa"
+              ref={inputRef}
+            />
             <IonButton size="small" shape="round" onClick={submitChat}>
               <IonIcon icon={send} slot="icon-only" />
             </IonButton>

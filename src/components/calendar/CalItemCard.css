@@ -1,14 +1,9 @@
-.cal-card {
+.cal-card, .course-card {
   cursor: pointer;
   display: flex;
   align-items: stretch;
-  transition: 0.25s;
+  transition: 0.15s;
   height: 100%;
-  ion-icon {
-    padding: 0.75em;
-    width: 3em;
-    height: 3em;
-  }
   ion-card-header {
     padding-bottom: 0.5em;
   }
@@ -28,7 +23,7 @@
     margin: 0.5em;
     margin-right: 0;
   }
-  .cal-content > ion-chip {
+  .cal-content ion-chip {
     margin-inline: 1px;
   }
   .tag-container ion-chip {
@@ -46,6 +41,18 @@
   transition: 0.2s;
   &.done {
     opacity: 0.5;
+  }
+  outline: 0px var(--ion-text-color-step-850) solid;
+  &.active {
+    outline: 4px var(--ion-text-color-step-850) solid;
+  }
+  .subject-line {
+    display: flex;
+    ion-button {
+      min-height: 33px;
+      min-width: 33px;
+      aspect-ratio: 1;
+    }
   }
 }
 #cal-summ .cal-card {

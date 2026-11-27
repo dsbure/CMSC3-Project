@@ -1,5 +1,6 @@
 import type { ICalItem } from './interfaces/ICalItem';
 import type { IChatData } from './interfaces/IChat';
+import type { ICourseData } from './interfaces/ICourseData';
 import type { IPost } from './interfaces/IPost';
 
 export const USER = {
@@ -386,7 +387,7 @@ export const POSTS: IPost[] = [
     comments: 87,
   },
   {
-    sender: 'Dee Makausad',
+    sender: _getRandomName(),
     postContent:
       "I wish I never met you \n \
     You are the worst thing that I'm still \n \
@@ -403,21 +404,21 @@ export const POSTS: IPost[] = [
     comments: _randRange(0, 99),
   },
   {
-    sender: 'Kenji Delos Reyes',
+    sender: _getRandomName(),
     postContent: '🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮🤮',
     created: _generateRandomDate(),
     likes: _randRange(0, 99),
     comments: _randRange(0, 99),
   },
   {
-    sender: 'Carson',
+    sender: _getRandomName(),
     postContent: 'Hi po! Is Zedrich Paraluman from 1-BSSecret single?????',
     created: _generateRandomDate(),
     likes: _randRange(0, 99),
     comments: _randRange(0, 99),
   },
   {
-    sender: 'Edgar Jay M. Navales',
+    sender: _getRandomName(),
     postContent: 'KALIBANGON KOOOOOOO TABANG',
     created: _generateRandomDate(),
     likes: _randRange(0, 99),
@@ -431,7 +432,7 @@ export const POSTS: IPost[] = [
     comments: _randRange(0, 99),
   },
   {
-    sender: 'Coolij of Enginiring',
+    sender: _getRandomName(),
     postContent: 'hi guys',
     created: _generateRandomDate(),
     likes: _randRange(0, 99),
@@ -443,39 +444,34 @@ export const CALITEMS: ICalItem[] = [
   {
     date: _generateRandomDate(),
     name: 'Yeah 2',
-    details:
-      "Something something something",
+    details: 'Something something something',
     tags: [],
   },
   {
     date: new Date(2026, 10, 13, 18, 30),
     name: 'End of the World',
-    details:
-      "pero atlis naay dost",
+    details: 'pero atlis naay dost',
     tags: ['No way'],
   },
   {
     date: _generateRandomDate(),
     name: 'Yeah 1',
-    details:
-      "Something something something",
+    details: 'Something something something',
     tags: ['No way', 'Yehey'],
   },
   {
-    date: new Date(2026, 10, 30, 9, 30),
+    date: new Date(2026, 11, 11, 9, 30),
     name: '😭',
-    details:
-      "Something something something",
+    details: 'Something something something',
     tags: ['NPU-SM', 'Yehey'],
-    from: "PHYS 20",
+    from: 'DS 19',
   },
   {
     date: new Date(2020, 11, 26, 9, 30),
     name: 'Beginning of End',
-    details:
-      "Something something something",
+    details: 'Something something something',
     tags: ['NPU-SM', 'Yehey'],
-    from: "PHYS 20",
+    from: 'PHYS 20',
   },
   {
     date: new Date(2026, 11, 26, 9, 30),
@@ -483,9 +479,158 @@ export const CALITEMS: ICalItem[] = [
     details:
       "Don't you notice how - I get quiet when there's no one else~ around. Me and You and Awkward Silence -- don't you dare look at me that way... I don't need reminders of how you don't feel the same...",
     tags: ['NPU-SM'],
-    from: "PHYS 20",
+    from: 'PHYS 20',
   },
 ];
+
+export const COURSES: ICourseData[] = [
+  {
+    name: 'DS 19',
+    prof: {
+      profName: _getRandomName(),
+      role: 'hahaha sikret po',
+      rating: 2.5,
+      reviews: ['mkns'],
+      schedule: 'W-F | 11:00 PM - 4:00 AM',
+    },
+    description:
+      'guys gasakit na gid akong likod unsaon man nako ni kaso ang importante kay dile mo komsay scolio > baho',
+    resources: [
+      {
+        title: 'Ano po meaning ng NGL',
+        description:
+          "Let me explain something. Ang NGL ay ang mga taong pumupunta sa langit. For example: Angel Locsin, Angel's Burger, mga ganon!!",
+        link: 'https://www.inquirer.net/496650/live-updates-miss-universe-2026/',
+      },
+      {
+        title: 'Aray mo good luck nalang',
+        description: 'hi guys',
+      },
+      {
+        title: 'Ano po meaning ng NGL',
+        description:
+          "Yun ung pupunta po sa langit, ung mga angel kumbaga sa inglis. Example kay Angel Locsin, Angel's Burger",
+        link: 'https://www.inquirer.net/496650/live-updates-miss-universe-2026/',
+      },
+      {
+        title: 'Aray mo good luck nalang',
+        description: 'hi guys',
+      },
+      {
+        title: 'Ano po meaning ng NGL',
+        description:
+          "Yun ung pupunta po sa langit, ung mga angel kumbaga sa inglis. Example kay Angel Locsin, Angel's Burger",
+        link: 'https://www.inquirer.net/496650/live-updates-miss-universe-2026/',
+      },
+      {
+        title: 'Aray mo good luck nalang',
+        description: 'hi guys',
+      },
+      {
+        title: 'Ano po meaning ng NGL',
+        description:
+          "Yun ung pupunta po sa langit, ung mga angel kumbaga sa inglis. Example kay Angel Locsin, Angel's Burger",
+        link: 'https://www.inquirer.net/496650/live-updates-miss-universe-2026/',
+      },
+      {
+        title: 'Aray mo good luck nalang',
+        description: 'hi guys',
+      },
+      {
+        title: 'Ano po meaning ng NGL',
+        description:
+          "Yun ung pupunta po sa langit, ung mga angel kumbaga sa inglis. Example kay Angel Locsin, Angel's Burger",
+        link: 'https://www.inquirer.net/496650/live-updates-miss-universe-2026/',
+      },
+      {
+        title: 'Aray mo good luck nalang',
+        description: 'hi guys',
+      },
+    ],
+  },
+  {
+    name: 'AMAT 152',
+    prof: {
+      profName: _getRandomName(),
+      rating: 5,
+      reviews: [],
+      schedule: 'M-F | 8:00 AM - 3:00 AM',
+    },
+    description: '>:(',
+    resources: [],
+  },
+  {
+    name: 'PHYS 20',
+    prof: {
+      profName: 'Algem Cris Crusis',
+      role: 'Physics Professor @ College of Engineering',
+      description: 'idjsaoijdsand asd jasid jsai odfva  ag df gds g fds g fds g dfg ds fg fds f ad asdsad sa ',
+      rating: 5,
+      reviews: [
+        'Lingaw ni sha na prof guys',
+        'Hi po how do i rate a prof',
+        'guys singko ko pero okay lang naa man si crushie cakes diri',
+        'I love physics kaau',
+        'Pero kabalo mo kung kinsa ang akong mas love?',
+        '[Review Deleted]',
+      ],
+      schedule: 'M-F | 8:00 AM - 3:00 AM',
+    },
+    description:
+      'Someething something something lingaw ang physics guys Am I Right? pabayaa ra grades kay ang importante kay kabalo mo sa tension ng T1',
+    resources: [
+      {
+        title: 'Study Tool for Physics',
+        description: 'Use this as your guide for this weeks lecture.',
+        link: 'https://recall-flashcards.vercel.app/',
+      },
+      {
+        title: 'Guys nag-relapse ko',
+        description: 'aynag uli gensan',
+        link: 'https://www.youtube.com/watch?v=elKTrXcqsFc',
+      },
+    ],
+  },
+];
+
+export function _getRandomName(): string {
+  const _NAMES: string[] = [
+    'Edgar Jay M. Navales',
+    'Zedrich Paraluman',
+    'Eric Malaya',
+    'Samm Briones',
+    'Kors Otoño',
+    'Nix',
+    'Carson Gerolia',
+    'Emmett Jasper Garcia',
+    'Finnegan Elias Jones Dela Cruz',
+    'Francesca Anissa Solomon',
+    'Carmen Jade P. Decatoria',
+    'fitterkarma',
+    'Munimuni',
+    'Cup of Joe',
+    'shirebound',
+    'syd hartha',
+    'Tothapi',
+    'Dilaw',
+    'Eraserheads',
+    'Magiliw Street',
+    "Any Name's Okay",
+    'Janine',
+    'juan karlos',
+    'Zild (ung sa ivos guys)',
+    'Jan Roberts',
+    'SunKissed Lola',
+    'Lola Amour',
+    'Yaelokre',
+    'Adie',
+    'SHANNi',
+    'geiko',
+    'Oh! Caraga',
+    'Chrstn',
+  ];
+  return _NAMES[Math.round(Math.random() * _NAMES.length)];
+}
 
 // placeholder funcsz
 function _randRange(min: number, max: number): number {
